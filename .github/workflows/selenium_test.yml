@@ -34,7 +34,7 @@ jobs:
           move screenshot.png screenshots/  # Mueve el screenshot sin renombrar
 
       - name: Subir screenshot de verificación
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: captura-prueba
           path: ./screenshots/

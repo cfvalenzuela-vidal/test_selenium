@@ -26,16 +26,11 @@ jobs:
           pip install playwright pytest-playwright  # Instala ambos paquetes
           playwright install --with-deps chromium  # Instala Chromium y sus dependencia
 
-      - name: Limpiar screenshots anteriores
-        run: Remove-Item -Path ./screenshots/* -Recurse -Force
+      - name: Ejecutar prueba
+        run: python tests/test_busqueda.py
 
-      - name: Ejecutar pruebas Selenium y guardar screenshot en carpeta
-        run: |
-          python -m pytest tests/test_busqueda.py -v --html=report.html --self-contained-html
-          move screenshot.png screenshots/  # Mueve el screenshot sin renombrar
-
-      - name: Subir screenshot de verificación
+      - name: Subir screenshot
         uses: actions/upload-artifact@v4
         with:
-          name: captura-prueba
-          path: ./screenshots/
+          name: screenshot-resultado
+          path: screenshot.png

@@ -27,7 +27,7 @@ jobs:
           playwright install --with-deps chromium  # Instala Chromium y sus dependencia
 
       - name: Limpiar screenshots anteriores
-        run: rm -rf ./screenshots/*
+        run: Remove-Item -Path ./screenshots/* -Recurse -Force
 
       - name: Ejecutar pruebas Selenium y guardar screenshot en carpeta
         run: |
